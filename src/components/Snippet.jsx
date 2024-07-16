@@ -10,10 +10,10 @@ function Snippet() {
         {item?.title}
       </div>
       <div className="flex w-full flex-col justify-center gap-5">
-        <div className=" w-96 relative p-3 mt-5 bg-gray-100">
+        <div className=" w-[90%] relative p-3 mt-5 bg-gray-100">
           <img
             alt="Snippet Image"
-            className=" bg-cover h-96 w-full aspect-square object-cover"
+            className=" bg-cover h-96 w-full aspect-square object-contain"
             src={item.image}
           />
         </div>
