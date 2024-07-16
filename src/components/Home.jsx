@@ -4,14 +4,13 @@ import SnippetCard from "./SnippetCard";
 import { FaSearch } from "react-icons/fa";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { BASE_URL } from "../urls";
 function Home() {
   const [data, setData] = useState();
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          `http://localhost:3000/api/snippet/allsnippets`
-        );
+        const response = await axios.get(`${BASE_URL}api/snippet/allsnippets`);
         console.log(response, "hhh");
         if (response) {
           const featuredSnippet = response.data.filter(
