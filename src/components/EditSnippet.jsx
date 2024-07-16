@@ -5,7 +5,7 @@ import { javascript } from "@codemirror/lang-javascript";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
-// import axios from 'axios';
+import { BASE_URL } from "../urls";
 
 const EditSnippet = () => {
   const { id } = useParams();
@@ -33,7 +33,7 @@ const EditSnippet = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3000/api/snippet/allsnippets/${id}`
+          `${BASE_URL}api/snippet/allsnippets/${id}`
         );
 
         console.log(response, "response");
@@ -71,7 +71,7 @@ const EditSnippet = () => {
 
     try {
       const response = await axios.put(
-        `http://localhost:3000/api/snippet/allsnippets/${id}`,
+        `${BASE_URL}api/snippet/allsnippets/${id}`,
         formData,
         {
           headers: {

@@ -3,6 +3,8 @@ import { useState } from "react";
 import SnippetCard from "./SnippetCard";
 import { FaSearch } from "react-icons/fa";
 import axios from "axios";
+import { BASE_URL } from "../urls";
+
 function Search() {
   const [data, setData] = useState([]);
   const [language, setLanguage] = useState("Javascript");
@@ -11,7 +13,7 @@ function Search() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3000/api/snippet/searchSnippet?searchQuery=${inputValue}`
+          `${BASE_URL}api/snippet/searchSnippet?searchQuery=${inputValue}`
         );
         console.log(response, "hhh");
         if (response) {
@@ -29,7 +31,7 @@ function Search() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3000/api/snippet/getsnippetsbylanguage?language=${language}`
+          `${BASE_URL}api/snippet/getsnippetsbylanguage?language=${language}`
         );
         console.log(response, "hhh");
         if (response) {

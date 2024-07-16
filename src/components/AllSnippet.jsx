@@ -6,6 +6,7 @@ import { FaInfo, FaEdit, FaWindowClose, FaStar } from "react-icons/fa";
 import axios from "axios";
 import { IoEye } from "react-icons/io5";
 import { toast } from "react-toastify";
+import { BASE_URL } from "../urls";
 
 function AllSnippet() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -21,9 +22,7 @@ function AllSnippet() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          `http://localhost:3000/api/snippet/allsnippets`
-        );
+        const response = await axios.get(`${BASE_URL}api/snippet/allsnippets`);
         console.log(response, "hhh");
         if (response) {
           setData(response.data);
@@ -44,14 +43,14 @@ function AllSnippet() {
   const handleDelete = async (id) => {
     try {
       const response = await axios.delete(
-        `http://localhost:3000/api/snippet/allsnippets/${id}`
+        `${BASE_URL}api/snippet/allsnippets/${id}`
       );
       console.log(response, "delte");
       if (response) {
         toast.success("Deleted SuccessFully");
         try {
           const response = await axios.get(
-            `http://localhost:3000/api/snippet/allsnippets`
+            `${BASE_URL}api/snippet/allsnippets`
           );
           console.log(response, "hhh");
           if (response) {
@@ -69,13 +68,13 @@ function AllSnippet() {
   const handlefeatured = async (id) => {
     try {
       const response = await axios.put(
-        `http://localhost:3000/api/search/handleFeaturedSnippets/${id}`
+        `${BASE_URL}api/search/handleFeaturedSnippets/${id}`
       );
 
       if (response) {
         try {
           const response = await axios.get(
-            `http://localhost:3000/api/snippet/allsnippets`
+            `${BASE_URL}api/snippet/allsnippets`
           );
           console.log(response, "hhh");
           if (response) {
