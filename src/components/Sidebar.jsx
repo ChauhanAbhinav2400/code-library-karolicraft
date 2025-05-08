@@ -6,6 +6,7 @@ import whitetwoLogo from "../assets/whitetwologo.png";
 import blacktwologo from "../assets/blacktwologo.png";
 function Sidebar() {
   const showlinks = localStorage.getItem("logintype");
+  const authenticated = localStorage.getItem("libarayToken");
   const [show, setShow] = useState(false);
   const [path, setpath] = useState("");
   const handlelogout = () => {
@@ -68,12 +69,14 @@ function Sidebar() {
             </Link>
           </>
         )}
-        <div
-          onClick={() => handlelogout()}
-          className="pl-4 py-3 cursor-pointer font-medium hover:bg-yellow-500"
-        >
-          Logout
-        </div>
+        {authenticated && (
+          <div
+            onClick={() => handlelogout()}
+            className="pl-4 py-3 cursor-pointer font-medium hover:bg-yellow-500"
+          >
+            Logout
+          </div>
+        )}
       </div>
     </>
   );

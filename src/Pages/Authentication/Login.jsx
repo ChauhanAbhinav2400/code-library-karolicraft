@@ -41,12 +41,12 @@ const LoginPage = () => {
         password,
       });
       console.log("Login submitted", response);
-      if (response.data.message === "Successful login") {
+      if (response) {
         setPassword("");
         setEmail("");
         toast.success(response.data.message);
         localStorage.setItem("libarayToken", response.data.token);
-        localStorage.setItem("logintype", response.data.type);
+        localStorage.setItem("logintype", response.data.loginType);
         window.location.href = "/home";
       } else {
         toast.error("Wrong Credentials");
